@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternativas Gratuitas para Fontes Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f8f9fb;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 220px;
+            padding: 0.65rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: white;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #0f3460;
+            box-shadow: 0 0 0 3px rgba(15, 52, 96, 0.1);
+        }
+
+        .filter-btn {
+            padding: 0.55rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #4b5563;
+        }
+
+        .filter-btn:hover {
+            border-color: #0f3460;
+            color: #0f3460;
+        }
+
+        .filter-btn.active {
+            background: #0f3460;
+            color: white;
+            border-color: #0f3460;
+        }
+
+        .count {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .table-wrapper {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 750px;
+        }
+
+        thead {
+            background: #f1f3f8;
+        }
+
+        th {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #4b5563;
+            border-bottom: 2px solid #e5e7eb;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+
+        th:hover {
+            color: #1a1a2e;
+        }
+
+        th .sort-icon {
+            margin-left: 4px;
+            opacity: 0.3;
+            font-size: 0.7rem;
+        }
+
+        th.sorted .sort-icon {
+            opacity: 1;
+        }
+
+        td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.92rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f8f9fb;
+        }
+
+        .font-name {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .type-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .type-sans-serif {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .type-serif {
+            background: #fce7f3;
+            color: #9d174d;
+        }
+
+        .type-slab-serif {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .type-display {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .alt-link {
+            color: #0f3460;
+            text-decoration: none;
+            border-bottom: 1px dashed #0f3460;
+            transition: all 0.2s;
+        }
+
+        .alt-link:hover {
+            color: #e94560;
+            border-bottom-color: #e94560;
+        }
+
+        .empty-cell {
+            color: #d1d5db;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 2rem 1rem;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            .controls {
+                flex-direction: column;
+            }
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alternativas Gratuitas para Fontes Premium</h1>
+        <p>Encontre fontes do Google Fonts que substituem fontes premium populares</p>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <input type="text" class="search-box" id="search" placeholder="Buscar fonte..." autocomplete="off">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="Sans-serif">Sans-serif</button>
+            <button class="filter-btn" data-filter="Serif">Serif</button>
+            <button class="filter-btn" data-filter="Slab Serif">Slab Serif</button>
+            <button class="filter-btn" data-filter="Display">Display</button>
+        </div>
+        <p class="count"><span id="count">57</span> fontes encontradas</p>
+        <div class="table-wrapper">
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-col="name">Fonte Premium <span class="sort-icon">&#9650;</span></th>
+                            <th data-col="type">Tipo <span class="sort-icon">&#9650;</span></th>
+                            <th>Alternativa 1</th>
+                            <th>Alternativa 2</th>
+                            <th>Alternativa 3</th>
+                            <th>Alternativa 4</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Todas as alternativas estao disponiveis gratuitamente no Google Fonts.
+    </footer>
+
+    <script>
+        const fonts = [
+            { name: "Impact", type: "Sans-serif", alts: ["Anton", "Oswald", "", ""] },
+            { name: "Effra", type: "Sans-serif", alts: ["Roboto", "Rubik", "", ""] },
+            { name: "Museo Slab", type: "Slab Serif", alts: ["Roboto Slab", "Zilla Slab", "", ""] },
+            { name: "Lucida Grande", type: "Sans-serif", alts: ["Varela", "Roboto", "", ""] },
+            { name: "Boxed", type: "Sans-serif", alts: ["Coda", "Barlow", "", ""] },
+            { name: "Museo Sans", type: "Sans-serif", alts: ["Raleway", "Muli", "Montserrat", ""] },
+            { name: "Bodoni", type: "Serif", alts: ["Bodoni Moda", "Arapey", "Prata", ""] },
+            { name: "Segoe UI", type: "Sans-serif", alts: ["Noto Sans", "Open Sans", "", ""] },
+            { name: "Frutiger", type: "Sans-serif", alts: ["Istok Web", "Roboto", "", ""] },
+            { name: "Avenir Next", type: "Sans-serif", alts: ["Prompt", "Muli", "Nunito", ""] },
+            { name: "Franklin Gothic", type: "Sans-serif", alts: ["Libre Franklin", "Source Sans Pro", "", ""] },
+            { name: "Gilroy", type: "Sans-serif", alts: ["Questrial", "Roboto", "", ""] },
+            { name: "Minion Pro", type: "Serif", alts: ["Crimson Text", "Alegreya", "", ""] },
+            { name: "Pluto Sans", type: "Sans-serif", alts: ["PT Sans", "Noto Sans", "", ""] },
+            { name: "Canela", type: "Serif/Display", alts: ["Spectral", "Yrsa", "", ""] },
+            { name: "Golden Metafor", type: "Serif/Display", alts: ["Gravitas One", "Ultra", "", ""] },
+            { name: "Circular", type: "Sans-serif", alts: ["Nunito", "Montserrat", "", ""] },
+            { name: "Campton", type: "Sans-serif", alts: ["Questrial", "Poppins", "", ""] },
+            { name: "DIN", type: "Sans-serif", alts: ["Roboto", "Cabin", "Barlow", ""] },
+            { name: "Sofia Pro", type: "Sans-serif", alts: ["Poppins", "Nunito Sans", "", ""] },
+            { name: "ITC Avant Garde Gothic", type: "Sans-serif", alts: ["Raleway", "Poppins", "", ""] },
+            { name: "Interstate", type: "Sans-serif", alts: ["Overpass", "", "", ""] },
+            { name: "Georgia", type: "Serif", alts: ["Tinos", "", "", ""] },
+            { name: "Univers", type: "Sans-serif", alts: ["Roboto", "", "", ""] },
+            { name: "Fairfield", type: "Serif", alts: ["Castoro", "Libre Baskerville", "", ""] },
+            { name: "Century Gothic", type: "Sans-serif", alts: ["Muli", "Questrial", "Didact Gothic", ""] },
+            { name: "Helvetica", type: "Sans-serif", alts: ["Roboto", "", "", ""] },
+            { name: "Glober", type: "Sans-serif", alts: ["Open Sans", "Public Sans", "", ""] },
+            { name: "Gill Sans", type: "Sans-serif", alts: ["Cabin", "Lato", "", ""] },
+            { name: "Copperplate", type: "Serif/Display", alts: ["Balthazar", "Alegreya SC", "", ""] },
+            { name: "Aktiv Grotesk", type: "Sans-serif", alts: ["Roboto", "Rubik", "", ""] },
+            { name: "Block Berthold", type: "Sans-serif/Display", alts: ["Paytone One", "", "", ""] },
+            { name: "Zona Pro", type: "Sans-serif", alts: ["Poppins", "Didact Gothic", "", ""] },
+            { name: "Nexa", type: "Sans-serif", alts: ["Poppins", "", "", ""] },
+            { name: "Neue Helvetica", type: "Sans-serif", alts: ["Roboto", "Open Sans", "IBM Plex Sans", ""] },
+            { name: "Cera Pro", type: "Sans-serif", alts: ["PT Sans", "", "", ""] },
+            { name: "Optima", type: "Sans-serif", alts: ["Arsenal", "", "", ""] },
+            { name: "Apercu", type: "Sans-serif", alts: ["Lato", "Cabin", "", ""] },
+            { name: "Trajan", type: "Serif", alts: ["Cinzel", "EB Garamond", "", ""] },
+            { name: "Proxima Nova", type: "Sans-serif", alts: ["Montserrat", "Nunito Sans", "Muli", "Open Sans"] },
+            { name: "TT Norms Pro", type: "Sans-serif", alts: ["Roboto", "Rubik", "", ""] },
+            { name: "Myriad Pro", type: "Sans-serif", alts: ["PT Sans", "Open Sans", "", ""] },
+            { name: "Avenir", type: "Sans-serif", alts: ["Nunito Sans", "Lato", "", ""] },
+            { name: "Bebas Neue", type: "Sans-serif/Display", alts: ["Oswald", "", "", ""] },
+            { name: "Arial", type: "Sans-serif", alts: ["Lato", "Open Sans", "", ""] },
+            { name: "Cerebri Sans", type: "Sans-serif", alts: ["Lato", "Open Sans", "", ""] },
+            { name: "Gotham", type: "Sans-serif", alts: ["Montserrat", "Open Sans", "Lato", ""] },
+            { name: "Acumin Pro", type: "Sans-serif", alts: ["Noto Sans", "Roboto", "", ""] },
+            { name: "Trade Gothic", type: "Sans-serif", alts: ["Libre Franklin", "", "", ""] },
+            { name: "Calibri", type: "Sans-serif", alts: ["Open Sans", "Fira Sans", "", ""] },
+            { name: "Maison Neue", type: "Sans-serif", alts: ["Lato", "Open Sans", "", ""] },
+            { name: "Intro", type: "Sans-serif", alts: ["Signika", "", "", ""] },
+            { name: "Benton Sans", type: "Sans-serif", alts: ["News Cycle", "Libre Franklin", "Source Sans Pro", ""] },
+            { name: "Gibson", type: "Sans-serif", alts: ["Noto Sans", "Montserrat", "", ""] },
+            { name: "Verdana", type: "Sans-serif", alts: ["Jost", "Arimo", "", ""] },
+            { name: "Brandon Grotesque", type: "Sans-serif", alts: ["Cabin", "Josefin Sans", "", ""] },
+            { name: "Futura", type: "Sans-serif", alts: ["Didact Gothic", "Overpass", "Nunito Sans", "Hind"] },
+        ];
+
+        function googleFontsUrl(fontName) {
+            return "https://fonts.google.com/specimen/" + fontName.replace(/ /g, "+");
+        }
+
+        function getTypeBadgeClass(type) {
+            const t = type.toLowerCase();
+            if (t.includes("slab")) return "type-slab-serif";
+            if (t.includes("display")) return "type-display";
+            if (t.includes("serif") && !t.includes("sans")) return "type-serif";
+            return "type-sans-serif";
+        }
+
+        function renderTable(data) {
+            const tbody = document.getElementById("table-body");
+            tbody.innerHTML = "";
+            document.getElementById("count").textContent = data.length;
+
+            data.forEach(font => {
+                const tr = document.createElement("tr");
+
+                const tdName = document.createElement("td");
+                tdName.className = "font-name";
+                tdName.textContent = font.name;
+                tr.appendChild(tdName);
+
+                const tdType = document.createElement("td");
+                tdType.innerHTML = '<span class="type-badge ' + getTypeBadgeClass(font.type) + '">' + font.type + '</span>';
+                tr.appendChild(tdType);
+
+                font.alts.forEach(alt => {
+                    const td = document.createElement("td");
+                    if (alt) {
+                        const a = document.createElement("a");
+                        a.href = googleFontsUrl(alt);
+                        a.target = "_blank";
+                        a.rel = "noopener noreferrer";
+                        a.className = "alt-link";
+                        a.textContent = alt;
+                        td.appendChild(a);
+                    } else {
+                        td.innerHTML = '<span class="empty-cell">&mdash;</span>';
+                    }
+                    tr.appendChild(td);
+                });
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        let currentFilter = "all";
+        let currentSearch = "";
+        let sortCol = null;
+        let sortAsc = true;
+
+        function applyFilters() {
+            let filtered = fonts.filter(f => {
+                const matchesFilter = currentFilter === "all" ||
+                    f.type.toLowerCase().includes(currentFilter.toLowerCase());
+                const q = currentSearch.toLowerCase();
+                const matchesSearch = !q ||
+                    f.name.toLowerCase().includes(q) ||
+                    f.type.toLowerCase().includes(q) ||
+                    f.alts.some(a => a.toLowerCase().includes(q));
+                return matchesFilter && matchesSearch;
+            });
+
+            if (sortCol) {
+                filtered.sort((a, b) => {
+                    const va = sortCol === "name" ? a.name : a.type;
+                    const vb = sortCol === "name" ? b.name : b.type;
+                    return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+                });
+            }
+
+            renderTable(filtered);
+        }
+
+        // Search
+        document.getElementById("search").addEventListener("input", function () {
+            currentSearch = this.value;
+            applyFilters();
+        });
+
+        // Filter buttons
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", function () {
+                document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                this.classList.add("active");
+                currentFilter = this.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        // Sort
+        document.querySelectorAll("th[data-col]").forEach(th => {
+            th.addEventListener("click", function () {
+                const col = this.dataset.col;
+                if (sortCol === col) {
+                    sortAsc = !sortAsc;
+                } else {
+                    sortCol = col;
+                    sortAsc = true;
+                }
+                document.querySelectorAll("th").forEach(h => h.classList.remove("sorted"));
+                this.classList.add("sorted");
+                this.querySelector(".sort-icon").innerHTML = sortAsc ? "&#9650;" : "&#9660;";
+                applyFilters();
+            });
+        });
+
+        // Initial render
+        renderTable(fonts);
+    </script>
+</body>
+</html>
