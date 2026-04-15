@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Autor - Alternativas Gratuitas para Fontes Premium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f8f9fb;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
+        header p { font-size: 1rem; opacity: 0.85; max-width: 650px; margin: 0 auto; }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.2s;
+        }
+
+        nav a:hover { background: rgba(255,255,255,0.15); }
+        nav a.current { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .author-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .author-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .author-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            margin-bottom: 1rem;
+        }
+
+        .author-hero h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-hero .role {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .author-body {
+            padding: 2rem;
+        }
+
+        .author-bio {
+            font-size: 1.05rem;
+            color: #374151;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1rem;
+            background: #f8f9fb;
+            border-radius: 8px;
+        }
+
+        .info-icon {
+            width: 36px;
+            height: 36px;
+            background: #e8edf5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #0f3460;
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1a1a2e;
+        }
+
+        .info-value a {
+            color: #0f3460;
+            text-decoration: none;
+        }
+
+        .info-value a:hover {
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid #d1d5db;
+            color: #1a1a2e;
+            background: white;
+        }
+
+        .social-link:hover {
+            border-color: #0f3460;
+            color: #0f3460;
+            background: #f0f4ff;
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        .about-project {
+            margin-top: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            padding: 2rem;
+        }
+
+        .about-project h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a1a2e;
+        }
+
+        .about-project p {
+            color: #374151;
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #9ca3af;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 700px) {
+            header { padding: 1.5rem 1rem; }
+            header h1 { font-size: 1.4rem; }
+            .author-hero { padding: 2rem 1rem 1.5rem; }
+            .author-avatar { width: 96px; height: 96px; }
+            .author-body { padding: 1.5rem 1rem; }
+            .social-links { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sobre o Autor</h1>
+        <p>Conhea a pessoa por tras deste projeto de alternativas tipograficas</p>
+        <nav>
+            <a href="index.html">Tabela</a>
+            <a href="compare.html">Comparar</a>
+            <a href="autor.html" class="current">Autor</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="author-card">
+            <div class="author-hero">
+                <img src="https://avatars.githubusercontent.com/u/11727669?v=4" alt="Guilherme Gonzalez" class="author-avatar">
+                <h2>Guilherme Gonzalez</h2>
+                <div class="role">UX Designer na Uxer | Design de Experiencia</div>
+            </div>
+
+            <div class="author-body">
+                <p class="author-bio">
+                    UX Designer apaixonado por proporcionar melhores experiencias em todos os sentidos.
+                    Este projeto nasceu da necessidade de encontrar alternativas gratuitas e acessiveis
+                    para fontes premium, ajudando designers e desenvolvedores a criar projetos incriveis
+                    sem comprometer o orcamento.
+                </p>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Localizacao</div>
+                            <div class="info-value">Sao Paulo, BR</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-label">E-mail</div>
+                            <div class="info-value"><a href="mailto:guiperezgo@gmail.com">guiperezgo@gmail.com</a></div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2s.07-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Website</div>
+                            <div class="info-value"><a href="https://www.guigonzalez.com.br" target="_blank" rel="noopener">guigonzalez.com.br</a></div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div>
+                            <div class="info-label">Empresa</div>
+                            <div class="info-value">Uxer | Design de Experiencia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://github.com/guigonzalez" target="_blank" rel="noopener" class="social-link">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.guigonzalez.com.br" target="_blank" rel="noopener" class="social-link">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                        Website
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-project">
+            <h3>Sobre este projeto</h3>
+            <p>
+                O <strong>Alternativas Gratuitas para Fontes Premium</strong> e um guia pratico que ajuda
+                designers e desenvolvedores a encontrar substitutos gratuitos do Google Fonts para fontes
+                premium populares.
+            </p>
+            <p>
+                O projeto oferece uma tabela completa com mais de 57 fontes premium mapeadas para suas
+                melhores alternativas gratuitas, alem de uma ferramenta de comparacao visual lado a lado
+                para avaliar a semelhanca entre as fontes.
+            </p>
+            <p>
+                Todas as fontes alternativas estao disponiveis gratuitamente atraves do Google Fonts,
+                tornando-as acessiveis para qualquer projeto web.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        Criado por Guilherme Gonzalez &mdash; Todas as alternativas estao disponiveis gratuitamente no Google Fonts.
+    </footer>
+</body>
+</html>
